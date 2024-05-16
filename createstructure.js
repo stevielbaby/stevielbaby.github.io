@@ -92,25 +92,6 @@ const App = () => {
 
 export default App;
 `,
-  '.gitignore': '',
-  'package.json': `{
-  "name": "my-react-app",
-  "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^5.2.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  }
-}
-`,
-  'README.md': '# My React App',
   'src/index.js': `import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -130,6 +111,35 @@ ReactDOM.render(
   font-family: Arial, sans-serif;
 }
 `,
+  '.gitignore': `node_modules/
+build/
+.env
+`,
+  'package.json': `{
+  "name": "my-react-app",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  },
+  "homepage": "https://steviel.github.io/stevielbaby.github.io"
+}
+`,
+  'README.md': '# My React App'
 };
 
 function createDirectories(baseDir, directories) {
@@ -145,12 +155,14 @@ function createDirectories(baseDir, directories) {
 function createFiles(baseDir, files) {
   Object.keys(files).forEach((file) => {
     const fullPath = path.join(baseDir, file);
-    fs.writeFileSync(fullPath, files[file]);
-    console.log(`Created file: ${fullPath}`);
+    if (!fs.existsSync(fullPath)) {
+      fs.writeFileSync(fullPath, files[file]);
+      console.log(`Created file: ${fullPath}`);
+    }
   });
 }
 
 createDirectories(baseDir, directories);
 createFiles(baseDir, files);
 
-console.log('Directory structure created successfully.');
+console.log('Directory structure and files created successfully.');
