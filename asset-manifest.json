@@ -1,13 +1,10 @@
 {
   "files": {
-    "main.css": "/stevielbaby.github.io/static/css/main.198e7074.css",
-    "main.js": "/stevielbaby.github.io/static/js/main.abe2a8b8.js",
+    "main.js": "/stevielbaby.github.io/static/js/main.b30d62ed.js",
     "index.html": "/stevielbaby.github.io/index.html",
-    "main.198e7074.css.map": "/stevielbaby.github.io/static/css/main.198e7074.css.map",
-    "main.abe2a8b8.js.map": "/stevielbaby.github.io/static/js/main.abe2a8b8.js.map"
+    "main.b30d62ed.js.map": "/stevielbaby.github.io/static/js/main.b30d62ed.js.map"
   },
   "entrypoints": [
-    "static/css/main.198e7074.css",
-    "static/js/main.abe2a8b8.js"
+    "static/js/main.b30d62ed.js"
   ]
 }
