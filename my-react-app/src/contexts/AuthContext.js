@@ -1,23 +1,31 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { authService } from '../services/authService';
+// src/contexts/AuthContext.js
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const fetchUser = async () => {
+    // Ensure getCurrentUser is defined and valid
+    const user = await getCurrentUser();
+    setCurrentUser(user);
+  };
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const user = await authService.getCurrentUser();
-      setUser(user);
-    };
-
     fetchUser();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ currentUser }}>
       {children}
     </AuthContext.Provider>
   );
+};
+
+export const useAuth = () => useContext(AuthContext);
+
+const getCurrentUser = async () => {
+  // Simulate an API call to get the current user
+  return { name: 'John Doe' };
 };

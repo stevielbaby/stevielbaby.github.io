@@ -1,9 +1,9 @@
-// src/LandingPage.js
-
+// src/pages/LandingPage.js
 import React from 'react';
 import { Container, Typography, Button, Grid, Paper, AppBar, Toolbar, Box } from '@mui/material';
 
 const LandingPage = () => {
+  console.log("Rendering LandingPage Component");
   return (
     <div>
       <AppBar position="static">
